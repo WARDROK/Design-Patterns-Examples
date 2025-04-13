@@ -40,23 +40,23 @@ public:
 // Composite
 class CompositeGraphic : public Graphic
 {
-private:
-    std::vector<std::shared_ptr<Graphic>> _graphics;
-
 public:
     void add(const std::shared_ptr<Graphic> &graphic)
     {
-        _graphics.push_back(graphic);
+        graphics_.push_back(graphic);
     }
 
     void draw() const override
     {
         std::cout << "CompositeGraphic contains:" << std::endl;
-        for (const auto &graphic : _graphics)
+        for (const auto &graphic : graphics_)
         {
             graphic->draw();
         }
     }
+
+private:
+    std::vector<std::shared_ptr<Graphic>> graphics_;
 };
 
 // Client

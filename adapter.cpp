@@ -32,15 +32,15 @@ public:
 // from the client's request() to the adaptee's specificRequest() method.
 class ObjectAdapter : public ITarget
 {
-private:
-    std::shared_ptr<Adaptee> _adaptee;
-
 public:
-    ObjectAdapter(const std::shared_ptr<Adaptee> &a) : _adaptee(a) {}
+    ObjectAdapter(const std::shared_ptr<Adaptee> &a) : adaptee_(a) {}
     void request() const override
     {
-        _adaptee->specificRequest();
+        adaptee_->specificRequest();
     }
+
+private:
+    std::shared_ptr<Adaptee> adaptee_;
 };
 
 // Class Adapter using inheritance
